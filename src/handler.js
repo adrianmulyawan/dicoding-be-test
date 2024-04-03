@@ -100,7 +100,32 @@ const showAllBooks = (request, h) => {
   return response;
 };
 
+const getBookById = (request, h) => {
+  const { bookId } = request.params;
+
+  const find = books.find((book) => book.id === bookId);
+
+  if (find) {
+    const response = h.response({
+      status: 'success',
+      data: {
+        book: find,
+      },
+    }).code(200);
+
+    return response;
+  }
+
+  const response = h.response({
+    status: 'fail',
+    message: 'Buku tidak ditemukan',
+  }).code(404);
+
+  return response;
+};
+
 module.exports = {
   addNewBooks,
   showAllBooks,
+  getBookById,
 };
