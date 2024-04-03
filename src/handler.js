@@ -82,6 +82,37 @@ const addNewBooks = (request, h) => {
   return response;
 };
 
+const showAllBooks = (request, h) => {
+  const myBooks = books.map((book) => ({
+    id: book.id,
+    name: book.name,
+    publisher: book.publisher,
+  }));
+
+  if (myBooks.length > 0) {
+    const response = h.response({
+      status: 'success',
+      data: {
+        books: myBooks,
+      },
+    });
+
+    response.code(200);
+    return response;
+  }
+
+  const response = h.response({
+    status: 'success',
+    data: {
+      books: [],
+    },
+  });
+
+  response.code(200);
+  return response;
+};
+
 module.exports = {
   addNewBooks,
+  showAllBooks,
 };

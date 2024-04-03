@@ -1,4 +1,4 @@
-const { addNewBooks } = require('./handler');
+const { addNewBooks, showAllBooks } = require('./handler');
 
 const routes = [
   {
@@ -9,16 +9,7 @@ const routes = [
   {
     method: 'GET',
     path: '/books',
-    handler: (request, h) => {
-      const response = h.response({
-        status: 'success',
-        statusCode: 200,
-        message: 'Hello World!',
-      });
-
-      response.code(200);
-      return response;
-    },
+    handler: showAllBooks,
   },
 ];
 
