@@ -89,22 +89,10 @@ const showAllBooks = (request, h) => {
     publisher: book.publisher,
   }));
 
-  if (myBooks.length > 0) {
-    const response = h.response({
-      status: 'success',
-      data: {
-        books: myBooks,
-      },
-    });
-
-    response.code(200);
-    return response;
-  }
-
   const response = h.response({
     status: 'success',
     data: {
-      books: [],
+      books: myBooks,
     },
   });
 
